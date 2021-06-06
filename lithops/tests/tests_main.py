@@ -210,28 +210,4 @@ if __name__ == '__main__':
     else:
         run_tests(args.test, args.config, args.mode, args.group, args.backend, args.storage)
 
-# global TEST_CLASSES
-#
-# for module in TEST_MODULES:
-#     for member in inspect.getmembers(module, inspect.isclass):
-#         if issubclass(member[1], unittest.TestCase):
-#             TEST_CLASSES.append(member[1])
 
-
-# def register_test_groups():
-#     """initializes the TEST_GROUPS variable"""
-#     global TEST_GROUPS
-#     for module in [str(x) for x in TEST_MODULES]:
-#         group_name = module.split('test_')[1].split('\'')[0]
-
-# for test_class in TEST_CLASSES:
-#     index = str(test_class).rfind("Test")
-#     group_name = str(test_class)[index + 4:-2]
-#     TEST_GROUPS[group_name] = test_class
-
-
-# func_names = []
-# for test_class in TEST_GROUPS.values():
-#     func_names.extend(get_tests_of_class(test_class))
-# for func_name in func_names:
-#     print(f'-> {func_name}')
