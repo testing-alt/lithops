@@ -1,6 +1,18 @@
 # Changelog
 
-## [v2.3.4.dev0]
+## [v2.3.5.dev0]
+
+### Added
+- [Core] ob.data_stream when using the partitioner it is also an iterator
+- [AWS Lambda] Add 'account_id' parameter in config (used if present instead of querying STS).
+
+### Changed
+- [Core] Add 'key' and 'bucket' attrs in localhost partitioner for compatibility with OS
+
+### Fixes
+- 
+
+## [v2.3.4]
 
 ### Added
 - [Core] Allow to execute a Class as lithops function
@@ -17,6 +29,7 @@
 - [joblib] Optimized joblib backend (concurrent args data upload/download)
 
 ### Fixes
+- [Core] Fixed module analyzer
 - [Core] Clear only present jobs instead of all after wait() or get_result()
 - [multiprocessing] Fix put/get slice to/from mp.Array or mp.RawArray
 
