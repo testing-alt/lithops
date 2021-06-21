@@ -29,6 +29,16 @@ jobs:
           value=$(python3 ./lithops/scripts/check_job_on_list.py "${GITHUB_WORKFLOW}")
           echo "::set-output name=string::$value"
 
+      - name: Install dependencies
+        run: python3 setup.py develop
+
+      - name: split lithops version
+        run: |
+          lithops_version= "${lithops --version}"
+          IFS=' '
+          read -a strarr <<<"$lithops_version"
+          echo "${strarr[2]}"
+
 
   CE_COS:
 
@@ -59,7 +69,8 @@ jobs:
         run: |
          docker login -u cohenjomer -p "${{ secrets.DOCKER_TOKEN }}"
          cd runtime/code_engine
-         lithops runtime build cohenjomer/lithops-ce-"${GITHUB_ACTOR,,}" -b code_engine
+         value =
+         lithops runtime build cohenjomer/lithops-ce-"${GITHUB_ACTOR,,}":"${lithops --version}" -b code_engine
 
       - name: Run Python tests
         run: |
