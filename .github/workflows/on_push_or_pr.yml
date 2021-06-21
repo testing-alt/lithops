@@ -34,10 +34,15 @@ jobs:
 
       - name: split lithops version
         run: |
-          lithops_version= "${lithops --version}"
-          IFS=' '
-          read -a strarr <<<"$lithops_version"
-          echo "${strarr[2]}"
+          lithops_version= $(lithops --version)
+          stringarray = ($lithops_version)
+          echo ${stringarray[2]}
+#      - name: split lithops version
+#        run: |
+#          lithops_version= "${lithops --version}"
+#          IFS=' '
+#          read -a strarr <<<"$lithops_version"
+#          echo "${strarr[2]}"
 
 
   CE_COS:
