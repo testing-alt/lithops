@@ -15,7 +15,7 @@ ibm:
 code_engine:
     namespace  : 75nd5iv9zir
     region     : us-south
-    runtime: cohenjomer/lithops-ce-<git-actor>
+    runtime: cohenjomer/lithops-ce-<git-actor>:<lithops-version>
 
 ibm_cos:
     region : eu-de

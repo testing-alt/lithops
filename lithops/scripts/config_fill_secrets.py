@@ -1,4 +1,6 @@
 import os
+import subprocess
+
 import sys
 
 
@@ -12,9 +14,11 @@ def get_config_file(backends_name):
 
 
 if __name__ == '__main__':
-    secrets_to_fill = ['<git-actor>','<iamapikey>', '<cos_api_key>', '<cf_api_key>']
+    lithops_version = subprocess.getoutput("lithops --version").split()[2]
+
+    secrets_to_fill = ['<lithops-version>', '<git-actor>', '<iamapikey>', '<cos_api_key>', '<cf_api_key>']
     config_file = get_config_file(sys.argv[1])
-    args = sys.argv[2:]
+    args = sys.argv[2:].insert(0, lithops_version)  # insert version to the beginning of the args list
 
     with open(config_file, 'r') as file:
         filedata = file.read()
@@ -24,4 +28,3 @@ if __name__ == '__main__':
 
     with open(config_file, 'w') as file:
         file.write(filedata)
-
