@@ -95,6 +95,31 @@ jobs:
           lithops test -c lithops/tests/config_files/lithops_config_CF_COS.yaml
 
 
+  LOCAL_HOST:
+    runs-on: ubuntu-latest
+
+    needs: Determine_Runnable_Jobs
+    if: contains(needs.Determine_Runnable_Jobs.outputs.jobs_to_run,'LOCAL_HOST')
+
+    steps:
+      - name: Clone Lithops repository
+        uses: actions/checkout@v2
+      - name: Install Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      - name: Install dependencies
+        run: |
+          python3 setup.py develop
+
+      - name: Run Python tests
+        env:
+          LITHOPS_CONFIG_FILE: ${{ github.workspace }}/lithops/tests/config_files/lithops_config_LOCAL.yaml
+        run: |
+          lithops test
+
+
   Clean:
     runs-on: ubuntu-latest
     if: always()  # this job will run regardless of the above job's status.
