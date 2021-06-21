@@ -34,7 +34,7 @@ jobs:
 
       - name: split lithops version
         run: |
-          lithops_version= $(lithops --version)
+          lithops_version=$(lithops --version)
           stringarray = ($lithops_version)
           echo ${stringarray[2]}
 #      - name: split lithops version
