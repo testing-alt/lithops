@@ -75,7 +75,7 @@ jobs:
         run: |
          docker login -u cohenjomer -p "${{ secrets.DOCKER_TOKEN }}"
          cd runtime/code_engine
-         lithops runtime build cohenjomer/lithops-ce-"${GITHUB_ACTOR,,}":2.3.5.dev0 -b code_engine
+         lithops runtime build cohenjomer/lithops-ce-"${GITHUB_ACTOR,,}":235dev0 -b code_engine
 
       - name: Run Python tests
         run: |
@@ -109,7 +109,7 @@ jobs:
         run: |
           docker login -u cohenjomer -p "${{ secrets.DOCKER_TOKEN }}"
           cd runtime/ibm_cf
-          lithops runtime build -f Dockerfile.python38 cohenjomer/lithops-cf-"${GITHUB_ACTOR,,}:2.3.5.dev0"
+          lithops runtime build -f Dockerfile.python38 cohenjomer/lithops-cf-"${GITHUB_ACTOR,,}:235dev0"
 
       - name: Run Python tests
         run: |

@@ -14,7 +14,7 @@ def get_config_file(backends_name):
 
 
 if __name__ == '__main__':
-    lithops_version = subprocess.getoutput("lithops --version").split()[2]
+    lithops_version = subprocess.getoutput("lithops --version").split()[2].replace('.','')
 
     secrets_to_fill = ['<lithops-version>', '<git-actor>', '<iamapikey>', '<cos_api_key>', '<cf_api_key>']
     config_file = get_config_file(sys.argv[1])
