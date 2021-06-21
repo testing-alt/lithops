@@ -75,7 +75,6 @@ jobs:
         run: |
          docker login -u cohenjomer -p "${{ secrets.DOCKER_TOKEN }}"
          cd runtime/code_engine
-         value =
          lithops runtime build cohenjomer/lithops-ce-"${GITHUB_ACTOR,,}":2.3.5.dev0 -b code_engine
 
       - name: Run Python tests
