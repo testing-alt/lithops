@@ -240,4 +240,5 @@ if __name__ == '__main__':
     elif args.testers == 'help':
         print_test_functions()
     else:
-        run_tests(args.testers, args.config, args.mode, args.groups, args.backend, args.storage, args.fail_fast, args.remove_datasets)
+        run_tests(args.testers, args.config, args.mode, args.groups, args.backend,
+                  args.storage, args.fail_fast, args.remove_datasets)
